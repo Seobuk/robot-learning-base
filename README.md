@@ -7,7 +7,7 @@ Claude Code로 **로봇 학습(robot learning) 프로젝트를 시작할 때 쓰
 빈 폴더에서 로봇 학습 프로젝트를 시작할 때마다 (1) 폴더 구조 잡고 (2) "체크포인트 커밋하지 마" 같은 규칙 적고 (3) 유용한 Claude 스킬 까는 일을 반복하게 된다. 이 repo는 그걸 한 번 해둔 **출발점**이다:
 
 - **`CLAUDE.md`** — Claude Code가 이 프로젝트에서 지킬 규칙(커밋 금지·하드웨어 안전·환경 분리·재현성). Opus 4.8에 맞춰 튜닝됨.
-- **스킬 30개** — Claude Code에서 자동으로 작동하는 도우미(코드 규율, 개발 워크플로우, UI/디자인, 문서 조판, 프로젝트 온보딩).
+- **스킬 30개** — Claude Code에서 자동으로 작동하는 도우미(코드 규율, 개발 워크플로우, UI/디자인, 코드·데이터 보고서 조판, 프로젝트 온보딩).
 - **두 스택 골격** — `isaac/`(Isaac Lab RL)와 `ros2_ws/`(ROS 2 + MuJoCo)가 충돌 없이 나란히.
 
 > 로봇 학습을 안 하더라도, 30개 스킬 + 개발 규칙을 갖춘 **범용 Claude Code 작업 베이스**로 그냥 써도 된다.
@@ -73,7 +73,7 @@ cd my-robot-project
 | 코딩 규율 (7) | `karpathy-guidelines`, `ponytail` + `-audit`/`-debt`/`-gain`/`-help`/`-review` |
 | 개발 워크플로우 · superpowers (14) | `brainstorming`, `writing-plans`, `executing-plans`, `subagent-driven-development`, `dispatching-parallel-agents`, `using-git-worktrees`, `test-driven-development`, `systematic-debugging`, `verification-before-completion`, `requesting-code-review`, `receiving-code-review`, `finishing-a-development-branch`, `using-superpowers`, `writing-skills` |
 | UI/UX 디자인 · ui-ux-pro-max (7) | `ui-ux-pro-max`, `design`, `design-system`, `brand`, `ui-styling`, `banner-design`, `slides` |
-| 문서 조판 (1) | `kami` |
+| 코드·데이터 보고서 조판 (1) | `kami` |
 | 프로젝트 온보딩 (1) | `setup` |
 
 ## 언제 무엇이 뜨나 (상황별)
@@ -83,14 +83,14 @@ cd my-robot-project
 - **UI/UX(ui-ux-pro-max)** — 웹/모바일 UI·디자인 요청 시. `design`, `ui-styling`(shadcn/ui + Tailwind), `slides`(HTML 프레젠테이션) 등.
 - **프로젝트 온보딩(setup)** — 기존 코드를 넣고 `이 코드 세팅해줘`처럼 요청하면 트리거. 의존성 설치 → 코드 분석 → **개발환경 가이드 + 메모리 MD + 코드에 맞는 CLAUDE.md** 생성. 설치·파일 생성/덮어쓰기 등 **변경 전엔 항상 먼저 물어본다**(기존 CLAUDE.md는 clobber 없이 merge).
 
-## kami — 문서/PDF 조판 (EN·KO)
+## kami — 코드·데이터 보고서 / 개발 문서 조판 (EN·KO)
 
-전문 문서를 parchment 배경 + ink-blue 액센트 + 세리프 중심으로 조판한다. 아래처럼 요청하면 자동 트리거:
+코드·데이터·실험 결과를 전문적인 **보고서·개발 문서(PDF)**로 조판한다(parchment 배경 + ink-blue 액센트 + 세리프). 개발 산출물을 남에게 보여줄 자료로 만들 때 쓴다. 아래처럼 요청하면 자동 트리거:
 
-- 한국어: `이력서 만들어줘` · `원페이저 만들어줘` · `이 리서치를 장문 문서로 정리해줘` · `발표용 슬라이드 만들어줘` · `앱 랜딩 페이지 만들어줘`
-- English: `build me a resume` · `make a one-pager` · `turn this into a PDF` · `design a slide deck`
+- 한국어: `이 코드 정리해서 리포트 만들어줘` · `이 데이터로 보고서 만들어줘` · `실험 결과를 장문 리포트로 정리해줘` · `개발환경 문서 만들어줘` · `발표용 슬라이드 만들어줘`
+- English: `turn this code into a report` · `make a report from this data` · `write up these experiment results` · `turn this into a PDF`
 
-**템플릿 9종**(One-Pager·Long Doc·Letter·Portfolio·Resume·Slides·Equity Report·Changelog·Landing Page) + SVG 다이어그램 14종. 출력은 기본 WeasyPrint(HTML→PDF), 슬라이드는 PPTX·Marp도 가능.
+데이터·지표는 인라인 SVG 다이어그램 14종(bar·line·donut·timeline·architecture·flowchart 등)으로 시각화한다. **템플릿 9종**: Long Doc(기술 문서)·One-Pager(요약)·Equity Report(지표 중심)·Changelog(릴리스 노트)·Slides(발표)·Letter·Portfolio·Resume·Landing Page. 출력은 기본 WeasyPrint(HTML→PDF), 슬라이드는 PPTX·Marp도 가능.
 
 문서를 실제로 렌더할 때 로컬 의존성:
 
