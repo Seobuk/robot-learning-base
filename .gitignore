@@ -92,3 +92,11 @@ Thumbs.db
 .vscode/*
 !.vscode/settings.json
 !.vscode/extensions.json
+
+# ─── kami skill: commit logic only ──────────────────────
+# 폰트(51M)·예시 갤러리(showcase/demos/illustrations)는 무거워 로컬 전용.
+# kami는 @font-face의 jsDelivr fallback + scripts/ensure-fonts.sh로 폰트 재provision.
+.claude/skills/kami/assets/fonts/
+.claude/skills/kami/assets/showcase/
+.claude/skills/kami/assets/demos/
+.claude/skills/kami/assets/illustrations/
