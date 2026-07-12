@@ -1,0 +1,94 @@
+# ─── Python ─────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+build/
+build*/
+dist/
+*.egg-info/
+.eggs/
+.venv/
+venv/
+env/
+.pixi/
+.conda/
+.ipynb_checkpoints/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# ─── Secrets / machine-local ────────────────────────────
+.env
+*.local
+.claude/settings.local.json
+
+# ─── ML model / artifact binaries (never commit — promote to DVC/HF) ─
+*.ckpt
+*.pt
+*.pth
+*.onnx
+*.safetensors
+*.pb
+*.h5
+*.tflite
+*.engine
+*.plan
+*.pkl
+*.zip
+
+# ─── Datasets: ignore blobs, keep DVC pointers + placeholder .gitignore ─
+data/**
+!data/**/*.dvc
+!data/**/.gitignore
+
+# ─── Experiment outputs / tracking ──────────────────────
+outputs/
+runs/
+logs/
+multirun/
+wandb/
+mlruns/
+lightning_logs/
+tensorboard/
+checkpoints/
+models/
+videos/
+.hydra/
+
+# ─── ROS 2 / colcon generated (never commit, never hand-edit) ─
+install/
+log/
+COLCON_IGNORE
+.colcon/
+ros2_ws/build/
+ros2_ws/install/
+ros2_ws/log/
+
+# ─── Rosbags / recordings ───────────────────────────────
+*.bag
+*.db3
+*.mcap
+rosbag2_*/
+
+# ─── Isaac Sim / Omniverse caches & logs ────────────────
+*.log
+.nvidia-omniverse/
+kit/logs/
+.cache/
+.thumbs/
+*.usd.thumbs/
+**/.thumbnails/
+
+# ─── MuJoCo ─────────────────────────────────────────────
+MUJOCO_LOG.TXT
+.mujoco_cache/
+
+# ─── OS / editor ────────────────────────────────────────
+.DS_Store
+Thumbs.db
+.idea/
+*.swp
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json

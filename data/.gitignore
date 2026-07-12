@@ -1,0 +1,4 @@
+# 데이터셋 blob은 커밋하지 않는다. DVC/HF 포인터(.dvc)와 이 파일만 추적.
+*
+!.gitignore
+!*.dvc
