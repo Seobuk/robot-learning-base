@@ -1,24 +1,77 @@
-# robot-learning-base
+<a id="top"></a>
+
+```
+██████╗  ██████╗ ██████╗  ██████╗ ████████╗
+██╔══██╗██╔═══██╗██╔══██╗██╔═══██╗╚══██╔══╝
+██████╔╝██║   ██║██████╔╝██║   ██║   ██║
+██╔══██╗██║   ██║██╔══██╗██║   ██║   ██║
+██║  ██║╚██████╔╝██████╔╝╚██████╔╝   ██║
+╚═╝  ╚═╝ ╚═════╝ ╚═════╝  ╚═════╝    ╚═╝
+        L E A R N I N G   ·   B A S E   🤖
+
+  Claude Code 로봇 학습 베이스 · Isaac Lab × ROS 2 × MuJoCo
+```
+
+<div align="center">
+
+**빈 폴더 대신 규칙·스킬·두 스택이 미리 세팅된 곳에서 로봇 학습을 시작하세요.**
+
+<br/>
+
+[![Claude Code](https://img.shields.io/badge/Claude%20Code-D97757?style=flat-square&logo=anthropic&logoColor=white)](https://claude.com/claude-code)
+![Isaac Lab](https://img.shields.io/badge/Isaac%20Lab-2.3.x-76B900?style=flat-square&logo=nvidia&logoColor=white)
+![Isaac Sim](https://img.shields.io/badge/Isaac%20Sim-5.1-76B900?style=flat-square&logo=nvidia&logoColor=white)
+![ROS 2](https://img.shields.io/badge/ROS%202-Jazzy-22314E?style=flat-square&logo=ros&logoColor=white)
+![MuJoCo](https://img.shields.io/badge/MuJoCo-3.x-EF5B25?style=flat-square)
+![PyTorch](https://img.shields.io/badge/PyTorch-2.7%20%2B%20CUDA%2012.8-EE4C2C?style=flat-square&logo=pytorch&logoColor=white)
+![Python](https://img.shields.io/badge/Python-3.11%20%7C%203.12-3776AB?style=flat-square&logo=python&logoColor=white)
+![Skills](https://img.shields.io/badge/local%20skills-30-8A2BE2?style=flat-square)
+
+![last commit](https://img.shields.io/github/last-commit/Seobuk/robot-learning-base?style=flat-square&color=success)
+![repo size](https://img.shields.io/github/repo-size/Seobuk/robot-learning-base?style=flat-square)
+![code size](https://img.shields.io/github/languages/code-size/Seobuk/robot-learning-base?style=flat-square)
+![top language](https://img.shields.io/github/languages/top/Seobuk/robot-learning-base?style=flat-square)
+
+<br/>
+
+[🤖 소개](#what) · [🧰 필요한 것](#need) · [🚀 시작하기](#start) · [⚠️ 규칙](#rules) · [🗂️ 구조](#tree) · [🧩 스킬 30](#skills) · [📄 kami](#kami) · [🔬 더 알아보기](#more)
+
+</div>
 
 Claude Code로 **로봇 학습(robot learning) 프로젝트를 시작할 때 쓰는 베이스 템플릿**. 개발 규칙(`CLAUDE.md`)과 작업을 돕는 로컬 스킬 30개가 미리 세팅돼 있어서, 이 폴더 안에서 바로 Isaac Lab이나 ROS 2/MuJoCo 프로젝트를 만들면 된다.
 
-## 이게 뭔가요?
+---
+
+<a id="what"></a>
+
+## 🤖 이게 뭔가요?
 
 빈 폴더에서 로봇 학습 프로젝트를 시작할 때마다 (1) 폴더 구조 잡고 (2) "체크포인트 커밋하지 마" 같은 규칙 적고 (3) 유용한 Claude 스킬 까는 일을 반복하게 된다. 이 repo는 그걸 한 번 해둔 **출발점**이다:
 
-- **`CLAUDE.md`** — Claude Code가 이 프로젝트에서 지킬 규칙(커밋 금지·하드웨어 안전·환경 분리·재현성). Opus 4.8에 맞춰 튜닝됨.
-- **스킬 30개** — Claude Code에서 자동으로 작동하는 도우미(코드 규율, 개발 워크플로우, UI/디자인, 코드·데이터 보고서 조판, 프로젝트 온보딩).
-- **두 스택 골격** — `isaac/`(Isaac Lab RL)와 `ros2_ws/`(ROS 2 + MuJoCo)가 충돌 없이 나란히.
+| | 무엇 | 설명 |
+|:--:|:--|:--|
+| 📜 | **`CLAUDE.md`** | Claude Code가 이 프로젝트에서 지킬 규칙(커밋 금지·하드웨어 안전·환경 분리·재현성). Opus 4.8에 맞춰 튜닝됨. |
+| 🧩 | **스킬 30개** | Claude Code에서 자동으로 작동하는 도우미(코드 규율, 개발 워크플로우, UI/디자인, 코드·데이터 보고서 조판, 프로젝트 온보딩). |
+| 🏗️ | **두 스택 골격** | `isaac/`(Isaac Lab RL)와 `ros2_ws/`(ROS 2 + MuJoCo)가 충돌 없이 나란히. |
 
+> [!TIP]
 > 로봇 학습을 안 하더라도, 30개 스킬 + 개발 규칙을 갖춘 **범용 Claude Code 작업 베이스**로 그냥 써도 된다.
 
-## 필요한 것
+---
+
+<a id="need"></a>
+
+## 🧰 필요한 것
 
 - **[Claude Code](https://claude.com/claude-code)** — 스킬과 `CLAUDE.md`가 여기서 작동한다. · **git**
 - 스택은 **실제로 쓰는 하나만 설치**하면 된다(Isaac·ROS 2 둘 다 깔 필요 없음). Isaac은 NVIDIA GPU + Isaac Sim, ROS 2는 Ubuntu(Jazzy = 24.04) — 각각 **필요한 것만 설치하면 그 스택을 바로 쓸 수 있다.** 자세한 건 각 스택 `CLAUDE.md`에.
 - 스킬·문서를 둘러보거나 코드를 읽는 데는 아무것도 설치하지 않아도 된다.
 
-## 빠르게 시작하기
+---
+
+<a id="start"></a>
+
+## 🚀 빠르게 시작하기
 
 **1. repo 받기** — clone 하거나 GitHub "Use this template"로 새 repo를 만든다:
 
@@ -40,15 +93,28 @@ cd my-robot-project
 
 **6. 개발 시작** — 이제 `CLAUDE.md` 규칙과 스킬 30개가 붙은 상태로 작업하면 된다. 반복 작업이 생기면 `.claude/skills/`에 스킬을 추가.
 
-## 꼭 알아둘 규칙 3가지
+---
+
+<a id="rules"></a>
+
+## ⚠️ 꼭 알아둘 규칙 3가지
 
 이 프로젝트는 Claude가 아래를 지키도록 설정돼 있다 (전체는 `CLAUDE.md`):
 
-1. **커밋하지 않는 것** — 체크포인트/가중치, 데이터셋, rosbag, 런 출력. 이미 `.gitignore`에 있다. `git add -A` 대신 `git status`로 확인하고 스테이징.
-2. **기본값은 시뮬레이션** — `ros2_ws`의 노드는 실제 로봇을 움직일 수 있다. "실기"라고 명시하기 전엔 시뮬레이션(`use_sim_time:=true`). 테스트 통과하려고 torque 리밋·캘리브레이션 상수를 임의로 바꾸지 않는다.
-3. **Isaac ↔ ROS 2 환경 분리** — Isaac Lab(Python 3.11)과 ROS 2(Jazzy, 3.12)는 한 환경에 같이 설치하면 충돌한다. 그래서 폴더가 나뉘어 있다.
+> [!CAUTION]
+> **1. 커밋하지 않는 것** — 체크포인트/가중치, 데이터셋, rosbag, 런 출력. 이미 `.gitignore`에 있다. `git add -A` 대신 `git status`로 확인하고 스테이징.
 
-## 폴더 둘러보기
+> [!WARNING]
+> **2. 기본값은 시뮬레이션** — `ros2_ws`의 노드는 실제 로봇을 움직일 수 있다. "실기"라고 명시하기 전엔 시뮬레이션(`use_sim_time:=true`). 테스트 통과하려고 torque 리밋·캘리브레이션 상수를 임의로 바꾸지 않는다.
+
+> [!IMPORTANT]
+> **3. Isaac ↔ ROS 2 환경 분리** — Isaac Lab(Python 3.11)과 ROS 2(Jazzy, 3.12)는 한 환경에 같이 설치하면 충돌한다. 그래서 폴더가 나뉘어 있다.
+
+---
+
+<a id="tree"></a>
+
+## 🗂️ 폴더 둘러보기
 
 ```
 .
@@ -64,31 +130,46 @@ cd my-robot-project
 
 ---
 
-# 번들된 스킬 30개
+<a id="skills"></a>
+
+## 🧩 번들된 스킬 30개
 
 `.claude/skills/`의 스킬은 이 repo와 함께 이동한다(전역으로 쓰려면 `~/.claude/skills/`로 복사). **대화 중 요청이 각 `SKILL.md`의 설명과 맞으면 자동 로드**되므로 따로 설치·호출할 필요가 없다. 일부는 슬래시로도 부른다(예: `/ponytail-review`).
 
-| 갈래 | 스킬 |
-|---|---|
-| 코딩 규율 (7) | `karpathy-guidelines`, `ponytail` + `-audit`/`-debt`/`-gain`/`-help`/`-review` |
-| 개발 워크플로우 · superpowers (14) | `brainstorming`, `writing-plans`, `executing-plans`, `subagent-driven-development`, `dispatching-parallel-agents`, `using-git-worktrees`, `test-driven-development`, `systematic-debugging`, `verification-before-completion`, `requesting-code-review`, `receiving-code-review`, `finishing-a-development-branch`, `using-superpowers`, `writing-skills` |
-| UI/UX 디자인 · ui-ux-pro-max (7) | `ui-ux-pro-max`, `design`, `design-system`, `brand`, `ui-styling`, `banner-design`, `slides` |
-| 코드·데이터 보고서 조판 (1) | `kami` |
-| 프로젝트 온보딩 (1) | `setup` |
+| 갈래 | 개수 | 스킬 |
+|:--|:--:|:--|
+| 🧭 **코딩 규율** | `7` | `karpathy-guidelines`, `ponytail` + `-audit`/`-debt`/`-gain`/`-help`/`-review` |
+| ⚡ **개발 워크플로우** · superpowers | `14` | `brainstorming`, `writing-plans`, `executing-plans`, `test-driven-development`, `systematic-debugging` … <sub>전체 ↓ 펼치기</sub> |
+| 🎨 **UI/UX 디자인** · ui-ux-pro-max | `7` | `ui-ux-pro-max`, `design`, `design-system`, `brand`, `ui-styling`, `banner-design`, `slides` |
+| 📄 **코드·데이터 보고서 조판** | `1` | `kami` |
+| 🚀 **프로젝트 온보딩** | `1` | `setup` |
 
-## 언제 무엇이 뜨나 (상황별)
+<details>
+<summary><b>⚡ 개발 워크플로우 (superpowers) 14개 전체 보기</b></summary>
+
+<br/>
+
+`brainstorming` · `writing-plans` · `executing-plans` · `subagent-driven-development` · `dispatching-parallel-agents` · `using-git-worktrees` · `test-driven-development` · `systematic-debugging` · `verification-before-completion` · `requesting-code-review` · `receiving-code-review` · `finishing-a-development-branch` · `using-superpowers` · `writing-skills`
+
+</details>
+
+### 언제 무엇이 뜨나 (상황별)
 
 - **코딩 규율** — 코드를 쓰거나 리뷰할 때 `karpathy-guidelines`·`ponytail`이 배경으로 작동(최소 구현·수술적 변경). 직접 호출: `/ponytail-review`(오버엔지니어링 리뷰), `/ponytail-audit`(repo 감사).
 - **개발 워크플로우(superpowers)** — `brainstorming`(작업 **전** 탐색), `writing-plans`→`executing-plans`(계획·실행), `test-driven-development`(구현 전 테스트), `systematic-debugging`(버그·실패 시), `using-git-worktrees`(격리 작업), `requesting-code-review`/`receiving-code-review`(리뷰).
 - **UI/UX(ui-ux-pro-max)** — 웹/모바일 UI·디자인 요청 시. `design`, `ui-styling`(shadcn/ui + Tailwind), `slides`(HTML 프레젠테이션) 등.
 - **프로젝트 온보딩(setup)** — 기존 코드를 넣고 `이 코드 세팅해줘`처럼 요청하면 트리거. 의존성 설치 → 코드 분석 → **개발환경 가이드 + 메모리 MD + 코드에 맞는 CLAUDE.md** 생성. 설치·파일 생성/덮어쓰기 등 **변경 전엔 항상 먼저 물어본다**(기존 CLAUDE.md는 clobber 없이 merge).
 
-## kami — 코드·데이터 보고서 / 개발 문서 조판 (EN·KO)
+---
+
+<a id="kami"></a>
+
+## 📄 kami — 코드·데이터 보고서 / 개발 문서 조판 (EN·KO)
 
 코드·데이터·실험 결과를 전문적인 **보고서·개발 문서(PDF)**로 조판한다(parchment 배경 + ink-blue 액센트 + 세리프). 개발 산출물을 남에게 보여줄 자료로 만들 때 쓴다. 아래처럼 요청하면 자동 트리거:
 
-- 한국어: `이 코드 정리해서 리포트 만들어줘` · `이 데이터로 보고서 만들어줘` · `실험 결과를 장문 리포트로 정리해줘` · `개발환경 문서 만들어줘` · `발표용 슬라이드 만들어줘`
-- English: `turn this code into a report` · `make a report from this data` · `write up these experiment results` · `turn this into a PDF`
+- **한국어**: `이 코드 정리해서 리포트 만들어줘` · `이 데이터로 보고서 만들어줘` · `실험 결과를 장문 리포트로 정리해줘` · `개발환경 문서 만들어줘` · `발표용 슬라이드 만들어줘`
+- **English**: `turn this code into a report` · `make a report from this data` · `write up these experiment results` · `turn this into a PDF`
 
 데이터·지표는 인라인 SVG 다이어그램 14종(bar·line·donut·timeline·architecture·flowchart 등)으로 시각화한다. **템플릿 9종**: Long Doc(기술 문서)·One-Pager(요약)·Equity Report(지표 중심)·Changelog(릴리스 노트)·Slides(발표)·Letter·Portfolio·Resume·Landing Page. 출력은 기본 WeasyPrint(HTML→PDF), 슬라이드는 PPTX·Marp도 가능.
 
@@ -100,17 +181,37 @@ pip install Pygments       # 선택 — 코드 하이라이트
 pip install python-pptx    # 선택 — 편집 가능한 PPTX
 ```
 
-폰트는 EN(**Charter**)·KO(**Source Han Serif KR**) 전용으로 트림했고, 용량 때문에 git에는 없다 — 새 머신에선 `bash .claude/skills/kami/scripts/ensure-fonts.sh`로 받거나 `@font-face`의 jsDelivr fallback으로 온라인 렌더된다. 전체 스펙: `.claude/skills/kami/CHEATSHEET.md`.
+> [!NOTE]
+> 폰트는 EN(**Charter**)·KO(**Source Han Serif KR**) 전용으로 트림했고, 용량 때문에 git에는 없다 — 새 머신에선 `bash .claude/skills/kami/scripts/ensure-fonts.sh`로 받거나 `@font-face`의 jsDelivr fallback으로 온라인 렌더된다. 전체 스펙: `.claude/skills/kami/CHEATSHEET.md`.
 
 ---
 
-# 더 알아보기
+<a id="more"></a>
 
-## 왜 두 스택이 분리돼 있나
+## 🔬 더 알아보기
+
+### 왜 두 스택이 분리돼 있나
 
 Isaac Lab(Python 3.11)과 ROS 2(Jazzy, Python 3.12)는 한 환경에 같이 설치하면 충돌한다. 그래서 서브프로젝트로 나누고, 각 폴더의 `CLAUDE.md`가 그 스택의 정확한 명령어와 관례를 담는다. **가장 구체적인 `CLAUDE.md`가 이긴다.**
 
-## 스택 버전 참고 (조사 기준일: 2026-07)
+| | 🟩 `isaac/` | 🟦 `ros2_ws/` |
+|:--|:--|:--|
+| **용도** | Isaac Lab RL | ROS 2 + MuJoCo 인터페이스 |
+| **Python** | 3.11 | 3.12 |
+| **핵심 스택** | Isaac Lab 2.3.x · Isaac Sim 5.1 · PyTorch 2.7 + CUDA 12.8 | ROS 2 Jazzy · MuJoCo 3.x · `mujoco_ros2_control` |
+| **가이드** | `isaac/CLAUDE.md` | `ros2_ws/CLAUDE.md` |
+
+### 스택 버전 참고 (조사 기준일: 2026-07)
 
 Isaac Lab 2.3.x / Isaac Sim 5.1 / PyTorch 2.7 + CUDA 12.8 · ROS 2 Jazzy + MuJoCo 3.x + `mujoco_ros2_control`.
-버전 조합은 fragile하니 함부로 올리지 말 것.
+
+> [!CAUTION]
+> 버전 조합은 fragile하니 함부로 올리지 말 것.
+
+<div align="center">
+
+<br/>
+
+<sub><a href="#top">⬆ 맨 위로</a></sub>
+
+</div>
