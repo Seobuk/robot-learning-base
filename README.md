@@ -15,7 +15,8 @@ Claude Code로 **로봇 학습(robot learning) 프로젝트를 시작할 때 쓰
 ## 필요한 것
 
 - **[Claude Code](https://claude.com/claude-code)** — 스킬과 `CLAUDE.md`가 여기서 작동한다. · **git**
-- 실제로 학습을 *돌릴* 때만 필요: Isaac은 NVIDIA GPU + Isaac Sim, ROS 2는 Ubuntu(Jazzy = 24.04). 자세한 건 각 스택 `CLAUDE.md`에. **지금 시작하는 데는 필요 없다.**
+- 스택은 **실제로 쓰는 하나만 설치**하면 된다(Isaac·ROS 2 둘 다 깔 필요 없음). Isaac은 NVIDIA GPU + Isaac Sim, ROS 2는 Ubuntu(Jazzy = 24.04) — 각각 **필요한 것만 설치하면 그 스택을 바로 쓸 수 있다.** 자세한 건 각 스택 `CLAUDE.md`에.
+- 스킬·문서를 둘러보거나 코드를 읽는 데는 아무것도 설치하지 않아도 된다.
 
 ## 빠르게 시작하기
 
@@ -28,12 +29,16 @@ cd my-robot-project
 
 **2. Claude Code로 이 폴더 열기** — 여는 순간 `.claude/skills/`의 스킬 30개와 루트 `CLAUDE.md` 규칙이 자동 적용된다. 따로 설치할 게 없다.
 
-**3. 스택 고르기** — 만들 프로젝트에 맞게 (자세한 명령은 해당 폴더의 `CLAUDE.md`):
+**3. 코드 넣기 — 새로 시작하거나 기존 코드를 투입** (자세한 명령은 해당 폴더의 `CLAUDE.md`):
 
-- **Isaac Lab RL**: `isaac/` 안에서 `./isaaclab.sh --new` 제너레이터로 태스크 생성 → `isaac/CLAUDE.md`
-- **ROS 2 + MuJoCo**: `ros2_ws/src/`에 패키지 만들고 `colcon build --symlink-install` → `ros2_ws/CLAUDE.md`
+- **새 프로젝트**: Isaac이면 `isaac/`에서 `./isaaclab.sh --new`로 태스크 생성, ROS 2면 `ros2_ws/src/`에 패키지 만들고 `colcon build --symlink-install`.
+- **기존 코드가 있으면**: 해당 스택 폴더(`isaac/`·`ros2_ws/`) 또는 새 폴더에 코드를 그대로 복사해 넣는다.
 
-**4. 환경변수** — `.env.example`를 `.env`로 복사하고 값(W&B 키·로봇 IP 등)을 채운다. `.env`는 git에 올라가지 않는다.
+**4. `setup` 스킬로 초기화** — Claude Code에서 `이 코드 세팅해줘`(또는 `기존 코드 분석해서 CLAUDE.md 만들어줘`)라고 하면 `setup` 스킬이 뜬다. 의존성 설치 → 코드 분석 → **개발환경 가이드 + 메모리 MD + 코드에 맞는 CLAUDE.md**를 만들어 준다. 설치·파일 생성/덮어쓰기 등 **변경 전엔 항상 먼저 물어보므로**(기존 루트 `CLAUDE.md`는 clobber 없이 merge) 하나씩 승인하며 진행하면 된다.
+
+**5. 환경변수** — `.env.example`를 `.env`로 복사하고 값(W&B 키·로봇 IP 등)을 채운다. `.env`는 git에 올라가지 않는다.
+
+**6. 개발 시작** — 이제 `CLAUDE.md` 규칙과 스킬 30개가 붙은 상태로 작업하면 된다. 반복 작업이 생기면 `.claude/skills/`에 스킬을 추가.
 
 ## 꼭 알아둘 규칙 3가지
 
