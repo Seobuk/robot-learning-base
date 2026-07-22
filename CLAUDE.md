@@ -1,61 +1,8 @@
-# CLAUDE.md — Engineering Guidelines (tuned for Opus 4.8)
+# CLAUDE.md
 
-Derived from Andrej Karpathy's LLM-coding pitfalls, re-tuned to Anthropic's official
-Opus 4.8 prompting guidance. Opus 4.8 follows instructions literally and is highly
-responsive to this file, so these rules use plain, direct language. Do not treat
-"CRITICAL / MUST / ALWAYS" in all-caps as a lever — aggressive phrasing makes this
-model over-trigger. Say "Use X when…", not "CRITICAL: you MUST use X".
+코드 작성/리뷰 행동 지침은 이 repo의 `karpathy-guidelines` 스킬을 따른다 — 핵심: 참조된 파일은 열어 확인한 뒤 답하고, 요청된 최소 변경만, 모호하면 추측 대신 질문. 사소한 작업(오타 수정, 자명한 one-liner)은 재량껏.
 
-## 1. Investigate before acting
-- Read any file the user references **before** answering or editing it. Never make
-  claims about code you haven't opened — if unsure, open it, don't guess.
-- Surface real ambiguity, inconsistencies, and tradeoffs, and ask rather than picking
-  an interpretation silently.
-- Once you've chosen an approach, commit to it. Don't re-litigate a decision unless
-  new information directly contradicts your reasoning.
-- If the request is unreasonable or infeasible, or a test looks wrong, say so instead
-  of working around it.
-
-## 2. Minimal, focused changes
-Only make changes that are directly requested or clearly necessary. Keep it simple:
-- **Scope** — no features, refactors, or "improvements" beyond the ask. A bug fix
-  doesn't need surrounding code cleaned up.
-- **Documentation** — don't add docstrings, comments, or type annotations to code you
-  didn't change. Comment only where the logic isn't self-evident.
-- **Defensive coding** — no error handling or validation for cases that can't happen.
-  Trust internal code; validate only at system boundaries (user input, external APIs).
-- **Abstractions** — no helpers or generality for one-time operations, and none for
-  hypothetical future requirements. The right complexity is the minimum for the task.
-
-## 3. Surgical edits
-- Touch only what the task requires. Match the existing style even if you'd do it
-  differently. Every changed line should trace to the request.
-- Remove imports/variables **your** change orphaned. Mention pre-existing dead code —
-  don't delete it unless asked.
-- Delete any temp/scratch files you created for iteration at the end of the task.
-- Confirm before destructive or hard-to-reverse actions: deleting files/branches,
-  `rm -rf`, dropping tables, `git push --force`, `git reset --hard`, or anything
-  visible to others (pushing, PR/issue comments). Never take a destructive shortcut
-  (`--no-verify`, discarding unfamiliar in-progress files) to get unstuck.
-
-## 4. Verify against goals
-- Turn tasks into verifiable goals. "Fix the bug" → write a test that reproduces it,
-  then make it pass. "Add validation" → write tests for invalid inputs, then pass them.
-- But solve the problem **generally**. Don't hard-code to specific test inputs or add
-  workarounds just to make tests green — tests verify correctness, they don't define
-  the solution.
-- Never edit or delete tests to make them pass.
-- Before finishing, self-check the output against the success criteria.
-- For multi-step work, state a short plan up front: `1. step → verify: check`.
-
-## 5. Delegate deliberately
-- Make independent tool calls (file reads, searches) in parallel, not one at a time.
-- Use subagents for parallel, isolated, or independent workstreams. For simple tasks,
-  single-file edits, or sequential work that needs shared context, work directly —
-  don't spawn a subagent where a `grep` would do.
-
----
-**Trivial tasks** (typo fixes, obvious one-liners): use judgment, skip the full rigor.
+파괴적/되돌리기 어려운 작업은 실행 전 확인: 파일·브랜치 삭제, `rm -rf`, 테이블 드롭, `git push --force`, `git reset --hard`, 외부에 보이는 작업(push, PR/이슈 코멘트). 막혔다고 파괴적 우회(`--no-verify`, 낯선 진행 중 파일 폐기)로 풀지 않는다.
 
 ## Project-Specific Guidelines — 로봇 학습 베이스
 
@@ -77,6 +24,6 @@ Only make changes that are directly requested or clearly necessary. Keep it simp
 
 **비밀/경로**: W&B 키·로봇 IP·크레덴셜은 커밋된 yaml이 아니라 `.env`(gitignore)에서 읽는다(`.env.example` 참고). 절대경로/사용자 데이터 디렉토리 하드코딩 금지 — config/env에서 루트를 읽는다.
 
-**스킬**: `.claude/skills/`의 스킬은 repo와 함께 이동한다(전역 적용은 `~/.claude/skills/`로 복사). 이 파일 상단의 가이드라인과 `karpathy-guidelines` 스킬은 같은 취지 — 로봇 전용 스킬은 실제 반복 작업이 생기면 추가.
+**스킬**: `.claude/skills/`의 스킬은 repo와 함께 이동한다(전역 적용은 `~/.claude/skills/`로 복사). 코드 작업 행동 지침은 `karpathy-guidelines` 스킬이 담당 — 로봇 전용 스킬은 실제 반복 작업이 생기면 추가.
 
 **스택 버전 핀**(조사 기준 2026-07, fragile하니 함부로 올리지 말 것): Isaac Lab 2.3.x / Isaac Sim 5.1 / PyTorch 2.7+CUDA 12.8 · ROS 2 Jazzy + MuJoCo 3.x + `mujoco_ros2_control`. 구체 명령은 각 스택 CLAUDE.md.
